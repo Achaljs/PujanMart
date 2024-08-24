@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home" >
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.puja.mart.ui.home.HomeFragment"
+        android:label="menu_home">
+        <action
+            android:id="@+id/action_nav_home_to_nav_productdesc"
+            app:destination="@+id/nav_productdesc" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_subcat"
+            app:destination="@+id/nav_subcat" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_myprofile"
+            app:destination="@+id/nav_myprofile" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_cart"
+            app:destination="@+id/nav_cart" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_wishlist"
+            app:destination="@+id/nav_wishlist" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_gallery"
+        android:name="com.puja.mart.ui.gallery.GalleryFragment"
+        android:label="Counseling" />
+    <fragment
+        android:id="@+id/nav_slideshow"
+        android:name="com.puja.mart.ui.slideshow.SlideshowFragment"
+        android:label="Grah Dosh Shaanti" />
+    <fragment
+        android:id="@+id/nav_productdesc"
+        android:name="com.puja.mart.ui.home.ProductListFragment"
+        android:label="Product Detail">
+        <action
+            android:id="@+id/action_nav_productdesc_to_nav_cart"
+            app:destination="@+id/nav_cart" />
+        <action
+            android:id="@+id/action_nav_productdesc_to_nav_address"
+            app:destination="@+id/nav_address" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_subcat"
+        android:name="com.puja.mart.ui.home.SubCatFragment"
+        android:label="Sub Category">
+        <action
+            android:id="@+id/action_nav_subcat_to_nav_productfilter"
+            app:destination="@+id/nav_productfilter" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_productfilter"
+        android:name="com.puja.mart.ui.home.FilterFragment"
+        android:label="Product By Sub-Category">
+        <action
+            android:id="@+id/action_nav_productdesc"
+            app:destination="@+id/nav_productdesc" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_myprofile"
+        android:name="com.puja.mart.ui.home.MyProfileFragment"
+        android:label="Product By Sub-Category">
+        <action
+            android:id="@+id/action_nav_myprofile_to_nav_home"
+            app:destination="@+id/nav_home" />
+        <action
+            android:id="@+id/action_nav_myprofile_to_nav_address"
+            app:destination="@+id/nav_address" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_address"
+        android:name="com.puja.mart.ui.home.AddressFragment"
+        android:label="Product By Sub-Category" />
+    <fragment
+        android:id="@+id/nav_cart"
+        android:name="com.puja.mart.ui.home.CartFragment"
+        android:label="Cart Fragment">
+        <action
+            android:id="@+id/action_nav_cart_to_nav_address"
+            app:destination="@+id/nav_address" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_wishlist"
+        android:name="com.puja.mart.ui.home.WishListFragment"
+        android:label="WishList Fragment">
+        <action
+            android:id="@+id/action_nav_wishlist_to_nav_productdesc"
+            app:destination="@+id/nav_productdesc" />
+    </fragment>
+</navigation>
