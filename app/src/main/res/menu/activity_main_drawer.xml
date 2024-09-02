@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt">
     <group android:checkableBehavior="single">
-        <item android:id="@+id/nav_home" android:title="@string/menu_home"/>
-        <item android:id="@+id/nav_gallery" android:visible="false" android:title="@string/menu_gallery"/>
-        <item android:id="@+id/nav_slideshow" android:visible="false" android:title="@string/menu_slideshow"/>
+        <item android:id="@+id/nav_home" android:title="home"/>
+        <item android:id="@+id/nav_gallery" android:visible="false" android:title="gallery"/>
+        <item android:id="@+id/nav_slideshow" android:visible="false" android:title="slideshow"/>
         <item android:id="@+id/nav_myprofile" android:title="My Profile"/>
         <item android:id="@+id/logout" android:title="Log Out"/>
     </group>

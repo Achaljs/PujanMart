@@ -6,6 +6,8 @@ android {
     namespace = "com.puja.mart"
     compileSdk = 34
 
+
+
     defaultConfig {
         applicationId = "com.puja.mart"
         minSdk = 24
@@ -46,13 +48,13 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
-
+    implementation("com.google.android.gms:play-services-auth-api-phone:18.0.1")
     implementation ("androidx.multidex:multidex:2.0.1")
     implementation (libs.lifecycle.extensions)
     implementation("androidx.profileinstaller:profileinstaller:1.3.1")
     implementation ("com.github.bumptech.glide:glide:4.16.0")
 
-
+    implementation ("androidx.drawerlayout:drawerlayout:1.1.1")
     implementation ("androidx.navigation:navigation-fragment-ktx:2.7.7")
     implementation ("androidx.navigation:navigation-ui-ktx:2.7.7")
 

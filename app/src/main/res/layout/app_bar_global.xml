@@ -8,46 +8,19 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/Theme.PujaMart.AppBarOverlay">
+        >
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/Theme.PujaMart.PopupOverlay">
+            android:background="@color/orange"
+            app:title="Pujan Mart"
+            app:titleTextColor="@color/white"
 
-            <LinearLayout
-                android:id="@+id/header"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_45sdp"
-                android:background="@color/purple_500"
-                android:orientation="horizontal">
+           >
 
-                <ImageView
-                    android:layout_width="@dimen/_100sdp"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/_5sdp"
-                    android:src="@mipmap/logo"
-                    android:visibility="invisible" />
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="@dimen/_10sdp"
-                    android:src="@android:drawable/ic_menu_search"
-                    app:tint="@color/white" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="@dimen/_15sdp"
-                    android:text="Total Price: 0Rs"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_10sdp" />
-            </LinearLayout>
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 

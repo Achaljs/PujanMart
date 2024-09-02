@@ -1,13 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.HomeFragment">
+    android:background="@color/white"
+    android:fitsSystemWindows="true">
+
+    <ScrollView
+        android:id="@+id/sView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/idBanner"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_130sdp"
+                android:contentDescription="banner"
+                android:scaleType="fitXY"
+                android:src="@mipmap/four" />
+        </RelativeLayout>
+    </ScrollView>
 
     <TextView
+        android:id="@+id/tvCategory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sView"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:text="Category"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/purple_500"
+        android:textSize="15sp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvcategory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvCategory"
+        android:layout_marginTop="@dimen/_10sdp"
+
+        />
+
+
+    <TextView
+        android:id="@+id/tvProducts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rvcategory"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:text="Products"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/purple_500"
+        android:textSize="15sp" />
+
+    <GridView
+        android:id="@+id/gvProductList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Hello" />
+        android:layout_below="@+id/tvProducts"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_50sdp"
+        android:numColumns="3"
+        android:scrollbars="none"
+        android:verticalSpacing="5dp" />
 
-</FrameLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_60sdp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:weightSum="100">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_gravity="center"
+            android:layout_weight="25"
+            android:src="@mipmap/home"
+            app:tint="#b2beb5" />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_gravity="center"
+            android:layout_weight="25"
+            android:src="@mipmap/list"
+            app:tint="#b2beb5" />
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_weight="25">
+
+            <TextView
+                android:id="@+id/tvCount"
+                android:layout_width="@dimen/_18sdp"
+                android:layout_height="@dimen/_18sdp"
+                android:layout_marginLeft="@dimen/_50sdp"
+                android:layout_marginBottom="@dimen/_15sdp"
+
+                android:gravity="center"
+                android:text="0"
+                android:textColor="@color/black"
+                android:textSize="9sp" />
+
+            <ImageView
+                android:id="@+id/ivCart"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_gravity="center"
+                android:src="@mipmap/cart"
+                app:tint="#b2beb5" />
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/ivWishList"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_gravity="center"
+            android:layout_weight="25"
+            android:src="@mipmap/heart"
+            app:tint="#b2beb5" />
+    </LinearLayout>
+</RelativeLayout>

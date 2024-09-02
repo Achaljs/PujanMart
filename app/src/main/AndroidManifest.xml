@@ -54,10 +54,12 @@
 
 
 
-        <receiver android:name=".SmsReceiver"
-            android:exported="true">
+        <receiver
+            android:name=".SmsReceiver"
+            android:exported="true"
+            android:permission="com.google.android.gms.auth.api.phone.permission.SEND" >
             <intent-filter>
-                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+                <action android:name="com.google.android.gms.auth.api.phone.SMS_RETRIEVED" />
             </intent-filter>
         </receiver>
 
