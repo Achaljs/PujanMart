@@ -21,6 +21,32 @@ public class ProductModal {
     public String product_thumb = "";
     public String product_updated = "";
     public String product_url = "";
+
+    public ProductModal(String product_name, boolean approval_status, int id, String product_childctgy, String product_created, String product_ctgy, String product_desc, int product_disc, String product_id, float product_new_price, String product_package, int product_price, int product_quantity, String product_slug, boolean product_status, int product_stock, String product_subctgy, String product_thumb, String product_updated, String product_url, String vendor_id, int vendor_price) {
+        this.product_name = product_name;
+        this.approval_status = approval_status;
+        this.id = id;
+        this.product_childctgy = product_childctgy;
+        this.product_created = product_created;
+        this.product_ctgy = product_ctgy;
+        this.product_desc = product_desc;
+        this.product_disc = product_disc;
+        this.product_id = product_id;
+        this.product_new_price = product_new_price;
+        this.product_package = product_package;
+        this.product_price = product_price;
+        this.product_quantity = product_quantity;
+        this.product_slug = product_slug;
+        this.product_status = product_status;
+        this.product_stock = product_stock;
+        this.product_subctgy = product_subctgy;
+        this.product_thumb = product_thumb;
+        this.product_updated = product_updated;
+        this.product_url = product_url;
+        this.vendor_id = vendor_id;
+        this.vendor_price = vendor_price;
+    }
+
     public String vendor_id = "";
     public int vendor_price;
 

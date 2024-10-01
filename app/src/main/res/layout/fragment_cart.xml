@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:aapt="http://schemas.android.com/aapt"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -13,14 +12,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/_10sdp"
-            android:text="Payment Mode: Cash On Delivery"
-            android:gravity="center_horizontal"
-            android:textColor="@color/purple_500"
-            android:textSize="@dimen/_15sdp" />
+
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -31,6 +23,31 @@
         android:layout_marginTop="@dimen/_10sdp"
         android:layout_marginBottom="@dimen/_50sdp"
         android:scrollbars="horizontal" />
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:id="@+id/emptyCart"
+        >
+
+    <ImageView
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:src="@mipmap/empty"
+        android:layout_gravity="center_horizontal"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/_20ssp"
+        android:textColor="#565454"
+        android:text="Oops, Go add some Products!"
+
+        />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -43,17 +60,20 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="50"
-            android:text="Total Amount"
-            android:backgroundTint="@color/white"/>
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/black"
+            android:text="Total Amount" />
 
         <Button
             android:id="@+id/btnCheckOut"
             android:layout_width="0dp"
+
             android:layout_height="match_parent"
+            android:backgroundTint="@color/orange"
             android:layout_marginLeft="@dimen/_10sdp"
             android:layout_weight="50"
-            app:corner_radius="10"
-            android:backgroundTint="#FF9800"
             android:text="Checkout" />
     </LinearLayout>
 </RelativeLayout>

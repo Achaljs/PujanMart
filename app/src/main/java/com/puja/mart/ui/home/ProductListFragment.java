@@ -16,9 +16,12 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import com.bumptech.glide.Glide;
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.imageview.ShapeableImageView;
 import com.puja.mart.API.Api;
 import com.puja.mart.API.ApiInterface;
 import com.puja.mart.Modal.ProductModal;
+import com.puja.mart.Modal.imageModel;
 import com.puja.mart.R;
 import java.util.List;
 import retrofit2.Call;
@@ -27,8 +30,8 @@ import retrofit2.Response;
 
 public class ProductListFragment extends Fragment {
     Button btnCheckOut;
-    Button btnMinus;
-    Button btnPlus;
+    MaterialButton btnMinus;
+    MaterialButton btnPlus;
     TextView itemCount;
     ImageView ivProduct;
     ImageView ivWishList;
@@ -44,6 +47,8 @@ public class ProductListFragment extends Fragment {
     TextView tvDesc;
     TextView tvPname;
     TextView tvPrice;
+    ShapeableImageView p1,p2,p3,p4;
+    String s1,s2,s3,s4;
 
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -63,10 +68,59 @@ public class ProductListFragment extends Fragment {
         this.btnCheckOut = (Button) v.findViewById(R.id.btnCheckOut);
         this.liAddTocart = (LinearLayout) v.findViewById(R.id.liAddTocart);
         this.tvAddToCartDefault = (Button) v.findViewById(R.id.tvAddToCartDefault);
-        this.btnMinus = (Button) v.findViewById(R.id.btnMinus);
-        this.btnPlus = (Button) v.findViewById(R.id.btnPlus);
+        this.btnMinus = (MaterialButton) v.findViewById(R.id.btnMinus);
+        this.btnPlus = (MaterialButton) v.findViewById(R.id.btnPlus);
         this.itemCount = (TextView) v.findViewById(R.id.itemCount);
+        this.p1=(ShapeableImageView) v.findViewById(R.id.preview1) ;
+        this.p2=(ShapeableImageView) v.findViewById(R.id.preview2) ;
+        this.p3=(ShapeableImageView) v.findViewById(R.id.preview3) ;
+        this.p4=(ShapeableImageView) v.findViewById(R.id.preview4) ;
         setDef();
+
+
+        setPrev();
+
+
+        p1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Glide.with(getContext()).load(s1).into(ivProduct);
+
+
+            }
+        });
+
+        p2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Glide.with(getContext()).load(s2).into(ivProduct);
+
+
+            }
+        });
+
+        p3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Glide.with(getContext()).load(s3).into(ivProduct);
+
+
+            }
+        });
+        p4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Glide.with(getContext()).load(s4).into(ivProduct);
+
+
+            }
+        });
+
+
         this.tvAddToCartDefault.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 ProductListFragment.this.liAddTocart.setVisibility(View.VISIBLE);
@@ -120,7 +174,7 @@ public class ProductListFragment extends Fragment {
         this.progress.setMessage("Wait while loading...");
         this.progress.setCancelable(false);
         this.progress.show();
-        ((ApiInterface) Api.getRetrofitInstanceForSMS().create(ApiInterface.class)).getProuctList("https://api.pujanmart.com/productdetails/" + this.pid).enqueue(new Callback<List<ProductModal>>() {
+        ((ApiInterface) Api.getRetrofitInstance().create(ApiInterface.class)).getProuctList("productdetails/" + this.pid).enqueue(new Callback<List<ProductModal>>() {
             public void onResponse(Call<List<ProductModal>> call, Response<List<ProductModal>> response) {
                 System.out.println(response.body());
                 ProductListFragment.this.progress.dismiss();
@@ -140,6 +194,13 @@ public class ProductListFragment extends Fragment {
         this.tvPname.setText(productModal2.getProduct_name());
         this.tvPrice.setText("₹" + String.valueOf(productModal2.getProduct_price()));
         this.tvDesc.setText(productModal2.getProduct_desc());
+
+
+
+
+
+
+
     }
 
     public void addToCart() {
@@ -149,7 +210,7 @@ public class ProductListFragment extends Fragment {
         this.progress.setMessage("Wait while loading...");
         this.progress.setCancelable(false);
         this.progress.show();
-        ((ApiInterface) Api.getRetrofitInstanceForSMS().create(ApiInterface.class)).send("https://api.pujanmart.com/cartinsert/" + this.mobile + "/" + this.pid + "/" + getAmount() + "/1").enqueue(new Callback<String>() {
+        ((ApiInterface) Api.getRetrofitInstance().create(ApiInterface.class)).send("cartinsert/" + this.mobile + "/" + this.pid + "/" + getAmount() + "/1").enqueue(new Callback<String>() {
             public void onResponse(Call<String> call, Response<String> response) {
                 if (response.body().contains("1")) {
                     Toast.makeText(ProductListFragment.this.getContext(), "Added in cart", Toast.LENGTH_SHORT).show();
@@ -171,7 +232,7 @@ public class ProductListFragment extends Fragment {
         this.progress.setMessage("Wait while loading...");
         this.progress.setCancelable(false);
         this.progress.show();
-        ((ApiInterface) Api.getRetrofitInstanceForSMS().create(ApiInterface.class)).send("https://api.pujanmart.com/cartremove/" + this.mobile + "/" + this.pid).enqueue(new Callback<String>() {
+        ((ApiInterface) Api.getRetrofitInstance().create(ApiInterface.class)).send("cartremove/" + this.mobile + "/" + this.pid).enqueue(new Callback<String>() {
             public void onResponse(Call<String> call, Response<String> response) {
                 try {
                     if (response.body().contains("1")) {
@@ -210,7 +271,7 @@ public class ProductListFragment extends Fragment {
                 response.body().contains("1");
                 ProductListFragment.this.progress.dismiss();
                 ProductListFragment.this.getProductDetail();
-                ProductListFragment.this.getWishListMaster();
+               ProductListFragment.this.getWishListMaster();
             }
 
             public void onFailure(Call<String> call, Throwable t) {
@@ -222,7 +283,7 @@ public class ProductListFragment extends Fragment {
 
     public void onResume() {
         super.onResume();
-        getWishListMaster();
+        //getWishListMaster();
     }
 
     public void getWishListMaster() {
@@ -230,7 +291,7 @@ public class ProductListFragment extends Fragment {
             public void onResponse(Call<List<ProductModal>> call, Response<List<ProductModal>> response) {
                 ProductListFragment.this.productModalList = response.body().toString();
                 if (ProductListFragment.this.productModalList.contains(ProductListFragment.this.productModal.getProduct_id())) {
-                    ProductListFragment.this.ivWishList.setImageTintList(ColorStateList.valueOf(ContextCompat.getColor(ProductListFragment.this.getContext(), R.color.purple_500)));
+                    ProductListFragment.this.ivWishList.setImageTintList(ColorStateList.valueOf(ContextCompat.getColor(ProductListFragment.this.getContext(), R.color.pink)));
                 } else {
                     ProductListFragment.this.ivWishList.setImageTintList(ColorStateList.valueOf(ContextCompat.getColor(ProductListFragment.this.getContext(), R.color.black)));
                 }
@@ -238,6 +299,38 @@ public class ProductListFragment extends Fragment {
 
             public void onFailure(Call<List<ProductModal>> call, Throwable t) {
                 Toast.makeText(ProductListFragment.this.getContext(), "An error has occured in Product list", Toast.LENGTH_SHORT).show();
+
+
+
+
+            }
+        });
+    }
+
+
+
+    public void setPrev(){
+        ((ApiInterface) Api.getRetrofitInstance().create(ApiInterface.class)).getImageList("productimages/" + this.pid).enqueue(new Callback<List<imageModel>>() {
+            public void onResponse(Call<List<imageModel>> call, Response<List<imageModel>> response) {
+                System.out.println(response.body());
+
+
+s1="https://pujanmart.com/images/product/" + response.body().get(0).getImage();
+s2="https://pujanmart.com/images/product/" + response.body().get(1).getImage();
+s3="https://pujanmart.com/images/product/" + response.body().get(2).getImage();
+
+s4="https://pujanmart.com/images/product/" + response.body().get(3).getImage();
+
+
+                Glide.with(getContext()).load(s1).into(p1);
+                Glide.with(getContext()).load(s2).into(p2);
+                Glide.with(getContext()).load(s3).into(p3);
+                Glide.with(getContext()).load(s4).into(p4);
+            }
+
+            public void onFailure(Call<List<imageModel>> call, Throwable t) {
+                Toast.makeText(ProductListFragment.this.getContext(), "An error has occured", Toast.LENGTH_SHORT).show();
+                ProductListFragment.this.progress.dismiss();
             }
         });
     }

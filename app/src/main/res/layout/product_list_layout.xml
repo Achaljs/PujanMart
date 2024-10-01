@@ -15,7 +15,8 @@
     android:layout_height="wrap_content"
     app:cardUseCompatPadding="true"
     android:backgroundTint="@color/white"
-    app:cardCornerRadius="10dp">
+    app:cardCornerRadius="10dp"
+    >
     <LinearLayout
         android:id="@+id/liProduct"
         android:layout_width="wrap_content"
@@ -25,22 +26,22 @@
 
 
         android:orientation="vertical"
-        android:padding="@dimen/_5sdp">
+        android:paddingHorizontal="@dimen/_20sdp"
+        android:paddingVertical="@dimen/_15sdp">
 
-        <ImageView
+
+    <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/productImage"
-            android:layout_width="@dimen/_75sdp"
-            android:layout_height="@dimen/_75sdp"
-
+            android:layout_width="100sp"
+            android:layout_height="100dp"
             android:scaleType="fitXY"
-            android:src="@mipmap/five" />
+            android:src="@mipmap/five"
+            app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_1sdp"
-            android:layout_marginLeft="@dimen/_5sdp"
-            android:layout_marginTop="@dimen/_5sdp"
-            android:background="@color/black" />
+            app:strokeColor="#9C27B0"
+            app:strokeWidth="@dimen/_1sdp" />
+
+
 
         <RatingBar
             style="@style/Widget.AppCompat.RatingBar.Small"
@@ -57,21 +58,45 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
-            android:layout_marginTop="2dp"
+            android:layout_marginTop="5dp"
             android:maxLines="1"
+
+            android:textStyle="bold"
             android:text="Fresh Green Chilis"
             android:textColor="@color/black"
-            android:textSize="10sp" />
+            android:textSize="12sp" />
 
-        <TextView
-            android:id="@+id/tvPrice"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:text="Rs 28/Piece"
-            android:textColor="@color/black"
-            android:textSize="10sp" />
+
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tvPrize"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="end"
+                android:maxLines="1"
+                android:layout_marginEnd="2dp"
+                android:text="Rs 1200"
+                android:textColor="#757575"
+                android:textSize="10sp"
+                android:layout_weight="1"
+                />
+            <TextView
+                android:id="@+id/tvfinalPrize"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:maxLines="1"
+                android:layout_weight="2"
+                android:text="Rs 600"
+                android:textColor="#FF9800"
+                android:textSize="15sp"
+                />
+        </LinearLayout>
 
         <Button
             android:layout_width="match_parent"
@@ -83,6 +108,22 @@
             android:visibility="gone" />
     </LinearLayout>
 
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Discount"
+        android:id="@+id/discount"
+        android:paddingVertical="2dp"
+        android:paddingHorizontal="4dp"
+        android:background="@drawable/round"
+        android:backgroundTint="@color/orange"
+        android:textColor="@color/white"
+        android:textStyle="bold|italic"
+        android:textSize="10sp"
+
+
+        />
 
 </androidx.cardview.widget.CardView>
 </LinearLayout>

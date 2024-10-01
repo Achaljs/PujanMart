@@ -36,7 +36,7 @@ public class CatListAdapter extends ArrayAdapter<SubCatModal> {
         if (v == null) {
             v = ((LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(this.custom_layout_id, (ViewGroup) null);
         }
-        ((TextView) v.findViewById(R.id.tvPrice)).setVisibility(View.GONE);
+       // ((TextView) v.findViewById(R.id.tvPrice)).setVisibility(View.GONE);
         Glide.with(getContext()).load("https://pujanmart.com/images/subctgy/" + this.items_list.get(position).getSubctgy_img()).into((ImageView) v.findViewById(R.id.productImage));
         ((TextView) v.findViewById(R.id.tvProductName)).setText(this.items_list.get(position).getSubctgy_name());
         ((LinearLayout) v.findViewById(R.id.liProduct)).setOnClickListener(new View.OnClickListener() {

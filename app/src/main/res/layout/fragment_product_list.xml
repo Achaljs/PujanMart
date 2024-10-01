@@ -13,22 +13,71 @@
         android:layout_marginBottom="@dimen/_50sdp"
         android:orientation="vertical"
         android:padding="@dimen/_9sdp">
-
         <ImageView
             android:id="@+id/ivProduct"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_200sdp"
+
             android:background="@color/white"
             android:src="@mipmap/logo_new" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:background="@color/white">
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="5dp"
+                android:src="@mipmap/head"
+                app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
+                android:id="@+id/preview1"
+                app:strokeColor="#FF5722"
+                app:strokeWidth="@dimen/_1sdp"/>
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="5dp"
+
+                android:src="@mipmap/head"
+                app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
+                android:id="@+id/preview2"
+                app:strokeColor="#FF5722"
+                app:strokeWidth="@dimen/_1sdp"/>
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="50dp"
+                android:layout_margin="5dp"
+
+                android:layout_height="50dp"
+                android:src="@mipmap/head"
+                app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
+                android:id="@+id/preview3"
+                app:strokeColor="#FF5722"
+                app:strokeWidth="@dimen/_1sdp"/>
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="50dp"
+                android:layout_margin="5dp"
+                app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
+android:id="@+id/preview4"
+                app:strokeColor="#FF5722"
+                app:strokeWidth="@dimen/_1sdp"
+                android:layout_height="50dp"
+                android:src="@mipmap/head"/>
+
+        </LinearLayout>
+
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_9sdp"
-            android:background="@color/white"
+            android:background="@drawable/round"
             android:minHeight="@dimen/_100sdp"
             android:orientation="vertical"
-            android:padding="@dimen/_9sdp">
+            android:padding="@dimen/_9sdp"
+            >
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -41,30 +90,30 @@
                     android:layout_height="match_parent"
                     android:layout_marginRight="@dimen/_10sdp"
                     android:text="Rudraksh mala"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_15sdp" />
 
-                <LinearLayout
-                    android:layout_width="@dimen/_70sdp"
-                    android:layout_height="@dimen/_20sdp"
-                    android:background="@color/purple_500">
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:text="3.2*"
-                        android:textColor="@color/black" />
-                </LinearLayout>
             </LinearLayout>
 
+            <RatingBar
+                android:id="@+id/rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+            android:rating="5"
+                style = "?android:attr/ratingBarStyleSmall"
+                android:numStars = "5"
+                android:progressTint="#FFC107"
+                android:textColor="@color/black"
+                 />
             <TextView
                 android:id="@+id/noOfRatingAndReview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_5sdp"
-                android:text="5 Rating and 3 Review"
+                android:text="3 Review"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_12sdp" />
 
@@ -85,9 +134,11 @@
 
                 <LinearLayout
                     android:layout_width="@dimen/_70sdp"
-                    android:layout_height="@dimen/_20sdp"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:background="@color/orange">
+                    android:backgroundTint="@color/orange"
+                    android:background="@drawable/round"
+                    >
 
                     <TextView
                         android:layout_width="match_parent"
@@ -95,6 +146,8 @@
                         android:layout_gravity="center"
                         android:gravity="center"
                         android:text="30% OFF"
+                        android:padding="2dp"
+                        android:textStyle="italic"
                         android:textColor="@color/white" />
                 </LinearLayout>
             </LinearLayout>
@@ -102,22 +155,32 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            android:fillViewport="true">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginTop="@dimen/_9sdp"
-                android:background="@color/white"
+                android:background="@drawable/round"
                 android:orientation="vertical"
                 android:padding="@dimen/_9sdp">
 
                 <TextView
-                    android:id="@+id/tvDesc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_5sdp"
-                    android:text="Description\10\10Welcome to the realm of divine energy and spirituality! In this article, we will delve into the significance of the revered 2 Mukhi Nepali Rudraksha. This mystical bead holds immense value in Hindu mythology and is believed to possess transformative properties. Join us as we explore its importance, benefits, rules for wearing and maintaining it, and the auspicious associations it holds with celestial bodies and deities."
+android:text="Description"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_15sdp" />
+
+                <TextView
+                    android:id="@+id/tvDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:text="Description\n\10Welcome to the realm of divine energy and spirituality! In this article, we will delve into the significance of the revered 2 Mukhi Nepali Rudraksha. This mystical bead holds immense value in Hindu mythology and is believed to possess transformative properties. Join us as we explore its importance, benefits, rules for wearing and maintaining it, and the auspicious associations it holds with celestial bodies and deities."
                     android:textColor="@color/black"
                     android:textSize="@dimen/_12sdp" />
             </LinearLayout>
@@ -129,6 +192,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:padding="5dp"
+        android:background="@color/white"
         android:weightSum="100">
 
         <LinearLayout
@@ -142,12 +206,15 @@
 
             android:weightSum="100">
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnMinus"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="33"
-                android:background="@color/purple_500"
+                android:backgroundTint="@color/white"
+                app:cornerRadius="10dp"
+                android:textColor="@color/black"
+                app:strokeWidth="1dp"
                 android:text="-"
                 android:textSize="@dimen/_15sdp" />
 
@@ -162,14 +229,15 @@
                 android:textColor="@color/black"
                 android:textSize="@dimen/_15sdp" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnPlus"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="33"
-                android:background="#FF9800"
+                android:backgroundTint="@color/black"
                 android:text="+"
                 android:textAlignment="center"
+                app:cornerRadius="10dp"
                 android:textSize="@dimen/_15sdp" />
         </LinearLayout>
 
@@ -189,14 +257,15 @@
             android:layout_marginLeft="@dimen/_10sdp"
             android:layout_marginRight="@dimen/_10sdp"
             android:layout_weight="50"
-            android:text="Add to Cart"
+            android:text="Open Cart"
+            android:drawableRight="@drawable/round_arrow_forward_24"
             android:backgroundTint="@color/orange"/>
     </LinearLayout>
 
     <ImageView
         android:id="@+id/ivWishList"
-        android:layout_width="@dimen/_25sdp"
-        android:layout_height="@dimen/_25sdp"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_30sdp"
         android:layout_alignParentRight="true"
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/_10sdp"

@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
+    alias(libs.plugins.jetbrains.kotlin.android)
 }
 
 android {
@@ -34,6 +35,9 @@ android {
     buildFeatures {
         viewBinding= true
     }
+    kotlinOptions {
+        jvmTarget = "17"
+    }
 }
 
 dependencies {
@@ -45,6 +49,8 @@ dependencies {
     implementation(libs.legacy.support.v4)
     implementation(libs.lifecycle.livedata.ktx)
     implementation(libs.lifecycle.viewmodel.ktx)
+    implementation(libs.core.ktx)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
@@ -54,11 +60,20 @@ dependencies {
     implementation("androidx.profileinstaller:profileinstaller:1.3.1")
     implementation ("com.github.bumptech.glide:glide:4.16.0")
 
+
     implementation ("androidx.drawerlayout:drawerlayout:1.1.1")
     implementation ("androidx.navigation:navigation-fragment-ktx:2.7.7")
     implementation ("androidx.navigation:navigation-ui-ktx:2.7.7")
 
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.11.0")
+
+
+    implementation ("com.google.code.gson:gson:2.9.0")
+
     implementation ("com.google.android.material:material:1.9.0")
+
+    implementation("phonepe.intentsdk.android.release:IntentSDK:2.4.3")
+
+    implementation ("com.github.denzcoskun:ImageSlideshow:0.1.2")
 }

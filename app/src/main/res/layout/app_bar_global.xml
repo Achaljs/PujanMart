@@ -16,7 +16,8 @@
             android:layout_height="?attr/actionBarSize"
             android:background="@color/orange"
             app:title="Pujan Mart"
-            app:titleTextColor="@color/white"
+            app:titleTextColor="@color/black"
+            android:theme="?attr/actionBarTheme"
 
            >
 

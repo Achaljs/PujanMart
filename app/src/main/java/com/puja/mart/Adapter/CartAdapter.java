@@ -8,19 +8,15 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.bumptech.glide.Glide;
+import com.google.android.material.button.MaterialButton;
 import com.puja.mart.API.Api;
 import com.puja.mart.API.ApiInterface;
-import com.puja.mart.CatAdapter;
 import com.puja.mart.CatItemclickListener;
 import com.puja.mart.Modal.CartModal;
 import com.puja.mart.R;
-
 import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -40,24 +36,25 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyView> {
         return new MyView(LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_cart, parent, false));
     }
 
-    public void onBindViewHolder(final MyView holder,  int position) {
+    public void onBindViewHolder(final MyView holder, final int position) {
 
-        holder.tvPname.setText(this.CartModalList.get(holder.getAdapterPosition()).getProduct_name());
-        holder.tvPrice.setText("₹ " + this.CartModalList.get(holder.getAdapterPosition()).getPrice());
-        holder.productQuantityTextView.setText("" + this.CartModalList.get(holder.getAdapterPosition()).getQuantity());
-        Glide.with(this.context).load("https://pujanmart.com/images/product/" + this.CartModalList.get(holder.getAdapterPosition()).getProduct_thumb()).into(holder.ivImage);
+        CartModal cm = this.CartModalList.get(position);
+        holder.tvPname.setText(cm.getProduct_name());
+        holder.tvPrice.setText("₹ " + cm.getPrice());
+        holder.productQuantityTextView.setText("" + cm.getQuantity());
+        Glide.with(this.context).load("https://pujanmart.com/images/product/" + cm.getProduct_thumb()).into(holder.ivImage);
         holder.btnPlus.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 CartAdapter cartAdapter = CartAdapter.this;
-                double amount = cartAdapter.getAmount(String.valueOf(((CartModal) cartAdapter.CartModalList.get(holder.getAdapterPosition())).getPrice()), String.valueOf(((CartModal) CartAdapter.this.CartModalList.get(holder.getAdapterPosition())).getQuantity()));
-                CartAdapter.this.addToCart(((CartModal) CartAdapter.this.CartModalList.get(holder.getAdapterPosition())).getUser_id(), ((CartModal) CartAdapter.this.CartModalList.get(holder.getAdapterPosition())).getProduct_id(), String.valueOf(amount), holder.productQuantityTextView);
+                double amount = cartAdapter.getAmount(String.valueOf( cm.getPrice()), String.valueOf(cm.getQuantity()));
+                CartAdapter.this.addToCart(cm.getUser_id(), cm.getProduct_id(), String.valueOf(amount), holder.productQuantityTextView);
                 holder.productQuantityTextView.setText("" + (Integer.valueOf(holder.productQuantityTextView.getText().toString()).intValue() + 1));
             }
         });
         holder.btnMinus.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                String mob = ((CartModal) CartAdapter.this.CartModalList.get(holder.getAdapterPosition())).getUser_id();
-                String pid = ((CartModal) CartAdapter.this.CartModalList.get(holder.getAdapterPosition())).getProduct_id();
+                String mob = (cm.getUser_id());
+                String pid = (cm.getProduct_id());
                 int val = Integer.valueOf(holder.productQuantityTextView.getText().toString()).intValue();
                 if (val != 0) {
                     CartAdapter.this.removeToCart(mob, pid);
@@ -74,8 +71,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyView> {
     }
 
     public class MyView extends RecyclerView.ViewHolder {
-        Button btnMinus;
-        Button btnPlus;
+        MaterialButton btnMinus;
+        MaterialButton btnPlus;
         ImageView ivImage;
         TextView productQuantityTextView;
         TextView tvPname;
@@ -83,8 +80,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyView> {
 
         public MyView(View view) {
             super(view);
-            this.btnPlus = (Button) view.findViewById(R.id.btnPlus);
-            this.btnMinus = (Button) view.findViewById(R.id.btnMinus);
+            this.btnPlus = (MaterialButton) view.findViewById(R.id.btnPlus);
+            this.btnMinus = (MaterialButton) view.findViewById(R.id.btnMinus);
             this.tvPname = (TextView) view.findViewById(R.id.tvPname);
             this.tvPrice = (TextView) view.findViewById(R.id.tvPrice);
             this.productQuantityTextView = (TextView) view.findViewById(R.id.productQuantityTextView);
@@ -96,6 +93,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyView> {
         ((ApiInterface) Api.getRetrofitInstanceForSMS().create(ApiInterface.class)).send("https://api.pujanmart.com/cartinsert/" + mobile + "/" + pid + "/" + amount + "/1").enqueue(new Callback<String>() {
             public void onResponse(Call<String> call, Response<String> response) {
                 if (response.body().contains("1")) {
+
                     Toast.makeText(CartAdapter.this.context, "Added in cart", Toast.LENGTH_SHORT).show();
                 }
             }

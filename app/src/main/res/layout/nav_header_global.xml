@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white"
-    android:gravity="bottom"
+    android:gravity="center"
     android:orientation="vertical"
     android:padding="@dimen/_16sdp"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
@@ -17,17 +17,6 @@
         android:contentDescription="navheader"
         android:paddingTop="30dp"
         app:srcCompat="@mipmap/head" />
-
-
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:layout_marginLeft="@dimen/_16sdp"
-        android:text="info@pujanmart.com\10nakshtratak@gmail.com" />
 
 
 </LinearLayout>

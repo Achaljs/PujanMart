@@ -1,14 +1,192 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.AddressFragment">
+    android:background="@color/white"
+    android:orientation="vertical">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+
+    <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:layout_above="@id/btnSubmit"
+        android:layout_alignParentTop="true"
+        android:scrollbars="none"
+        android:padding="16dp"
+        android:fillViewport="true"
+        >
 
-</FrameLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="16dp"
+            android:background="@color/white">
+
+            <TextView
+                android:id="@+id/page_subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Please Enter/Update your adress correctly so that We can deliver your package on the right location."
+                android:textStyle="italic"
+                android:layout_marginTop="8dp"
+                />
+
+            <!-- Name Input -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/name_input_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxStrokeColor="@color/orange"
+                app:boxBackgroundColor="#0DFF9800"
+                android:layout_marginTop="20dp"
+                app:boxStrokeWidthFocused="@dimen/cardview_compat_inset_shadow">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Name" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Mobile Input -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/mobile_input_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxStrokeColor="@color/orange"
+                app:boxBackgroundColor="#0DFF9800"
+                android:layout_marginTop="20dp"
+                app:boxStrokeWidthFocused="@dimen/cardview_compat_inset_shadow">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etMob"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Mobile No"
+                    android:inputType="phone"
+                    android:maxLength="10" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Address Input -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/address_input_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxStrokeColor="@color/orange"
+                app:boxBackgroundColor="#0DFF9800"
+                android:layout_marginTop="20dp"
+                app:boxStrokeWidthFocused="@dimen/cardview_compat_inset_shadow">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Address" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- City Input -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/city_input_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxStrokeColor="@color/orange"
+                app:boxBackgroundColor="#0DFF9800"
+                android:layout_marginTop="20dp"
+                app:boxStrokeWidthFocused="@dimen/cardview_compat_inset_shadow">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etCity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="City" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Locality Input -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/locality_input_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxStrokeColor="@color/orange"
+                app:boxBackgroundColor="#0DFF9800"
+                android:layout_marginTop="20dp"
+                app:boxStrokeWidthFocused="@dimen/cardview_compat_inset_shadow">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etLocality"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Locality" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- State Input -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/state_input_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxStrokeColor="@color/orange"
+                app:boxBackgroundColor="#0DFF9800"
+                android:layout_marginTop="20dp"
+                app:boxStrokeWidthFocused="@dimen/cardview_compat_inset_shadow">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etState"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="State" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Pin Code Input -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/pincode_input_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxStrokeColor="@color/orange"
+                app:boxBackgroundColor="#0DFF9800"
+                android:layout_marginTop="20dp"
+                app:boxStrokeWidthFocused="@dimen/cardview_compat_inset_shadow">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etPinCode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Pin Code"
+                    android:inputType="number" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Submit Button at Bottom -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSubmit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/orange"
+        android:text="Cash on Delivary"
+        android:layout_above="@id/btnpay"
+        app:cornerRadius="10dp"
+        android:layout_marginHorizontal="40dp"
+        android:drawableRight="@drawable/round_arrow_forward_24"
+        android:textColor="@android:color/white" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnpay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginVertical="16dp"
+        android:backgroundTint="@color/pink"
+        android:text="Pay Now"
+        app:cornerRadius="10dp"
+        android:layout_marginHorizontal="40dp"
+        android:drawableRight="@drawable/round_arrow_forward_24"
+        android:textColor="@android:color/white" />
+
+</RelativeLayout>

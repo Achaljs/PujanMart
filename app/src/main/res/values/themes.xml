@@ -4,7 +4,16 @@
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
         <item name="android:statusBarColor">@color/orange</item>
+        <item name="android:windowLightStatusBar">true</item>
+
+        <item name="android:fontFamily">@font/mons</item>
+        <item name="fontFamily">@font/sans</item>
+
     </style>
 
+    <style name="roundedImageViewRounded">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">20%</item>
+    </style>
     <style name="Theme.PujanMart" parent="Base.Theme.PujanMart" />
 </resources>

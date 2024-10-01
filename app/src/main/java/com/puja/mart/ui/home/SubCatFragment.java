@@ -1,66 +1,87 @@
 package com.puja.mart.ui.home;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+import android.widget.GridView;
+import android.widget.TextView;
+import android.widget.Toast;
+import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import com.puja.mart.API.Api;
+import com.puja.mart.API.ApiInterface;
+import com.puja.mart.Adapter.CatListAdapter;
+import com.puja.mart.CatItemclickListener;
 import com.puja.mart.R;
+import com.puja.mart.SubCatModal;
+import java.util.List;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link SubCatFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class SubCatFragment extends Fragment {
+public class SubCatFragment extends Fragment implements CatItemclickListener {
+    CatItemclickListener catItemclickListener;
+    String cid;
+    GridView gvSubcatList;
+    NavController navController;
+    ProgressDialog progress;
+    TextView showAll;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public SubCatFragment() {
-        // Required empty public constructor
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        this.navController = Navigation.findNavController(view);
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment SubCatFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static SubCatFragment newInstance(String param1, String param2) {
-        SubCatFragment fragment = new SubCatFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View v = inflater.inflate(R.layout.fragment_sub_cat, container, false);
+        this.cid = (String) getArguments().get("cid");
+        this.gvSubcatList = (GridView) v.findViewById(R.id.gvSubcatList);
+        this.showAll = (TextView) v.findViewById(R.id.showAll);
+        this.catItemclickListener = this;
+        ((TextView) v.findViewById(R.id.tvCategory)).setText(this.cid + ":");
+        getSubCat(this.cid);
+        this.showAll.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Bundle bundle = new Bundle();
+                bundle.putString("cid", SubCatFragment.this.cid);
+                bundle.putString("scid", "-1");
+                SubCatFragment.this.navController.navigate(R.id.action_nav_subcat_to_nav_productfilter, bundle);
+            }
+        });
+        return v;
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+    public void getSubCat(String cid2) {
+        ProgressDialog progressDialog = new ProgressDialog(getContext());
+        this.progress = progressDialog;
+        progressDialog.setTitle("Loading");
+        this.progress.setMessage("Wait while loading...");
+        this.progress.setCancelable(false);
+        this.progress.show();
+        ((ApiInterface) Api.getRetrofitInstanceForSMS().create(ApiInterface.class)).getSubCatList("https://api.pujanmart.com/productsubctgylist/" + cid2).enqueue(new Callback<List<SubCatModal>>() {
+            public void onResponse(Call<List<SubCatModal>> call, Response<List<SubCatModal>> response) {
+                SubCatFragment.this.setProductList(response.body());
+            }
+
+            public void onFailure(Call<List<SubCatModal>> call, Throwable t) {
+                Toast.makeText(SubCatFragment.this.getContext(), "An error has occured", Toast.LENGTH_SHORT).show();
+                SubCatFragment.this.progress.dismiss();
+            }
+        });
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_sub_cat, container, false);
+    public void setProductList(List<SubCatModal> productModalList) {
+        this.gvSubcatList.setAdapter(new CatListAdapter(getContext(), R.layout.categorylayout, productModalList, this.catItemclickListener));
+        this.progress.dismiss();
+    }
+
+    public void onClickCat(String subcatid) {
+        Bundle bundle = new Bundle();
+        bundle.putString("cid", this.cid);
+        bundle.putString("scid", subcatid);
+        this.navController.navigate(R.id.action_nav_subcat_to_nav_productfilter, bundle);
     }
 }

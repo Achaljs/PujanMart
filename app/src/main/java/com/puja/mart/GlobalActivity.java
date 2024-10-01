@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -57,9 +59,17 @@ public class GlobalActivity extends AppCompatActivity implements NavigationView.
             startActivity(new Intent(this, LoginActivity.class));
         } else if (id == R.id.nav_myprofile) {
             navController.navigate(R.id.action_nav_home_to_nav_myprofile);
-        } else if (id == R.id.nav_home) {
-            navController.navigate(R.id.action_nav_myprofile_to_nav_home);
+
         }
+        else if (id == R.id.nav_MyOrder) {
+            navController.navigate(R.id.action_nav_home_to_nav_MyOrder);
+        }
+        else if (id == R.id.nav_home) {
+            Toast.makeText(this, "Already At Home",Toast.LENGTH_SHORT).show();
+        }
+
+
+
         ((DrawerLayout) findViewById(R.id.drawer_layout)).closeDrawer((int) GravityCompat.START);
         return true;
     }

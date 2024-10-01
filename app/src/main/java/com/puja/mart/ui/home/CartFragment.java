@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.fragment.app.Fragment;
@@ -32,6 +33,7 @@ public class CartFragment extends Fragment {
     SharedPreferences sharedPreferences;
     TextView tvAmount;
     String value = "";
+    LinearLayout empty;
 
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -44,6 +46,7 @@ public class CartFragment extends Fragment {
         this.rvcategory = (RecyclerView) v.findViewById(R.id.rvcategory);
         this.tvAmount = (TextView) v.findViewById(R.id.tvAmount);
         this.btnCheckOut = (Button) v.findViewById(R.id.btnCheckOut);
+        this.empty=(LinearLayout) v.findViewById(R.id.emptyCart);
         getdata();
         this.btnCheckOut.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -72,7 +75,7 @@ public class CartFragment extends Fragment {
             }
 
             public void onFailure(Call<List<CartModal>> call, Throwable t) {
-                Toast.makeText(CartFragment.this.getContext(), "An error has occured", 1).show();
+                Toast.makeText(CartFragment.this.getContext(), "An error has occured", Toast.LENGTH_SHORT).show();
                 CartFragment.this.progress.dismiss();
             }
         });
@@ -87,8 +90,14 @@ public class CartFragment extends Fragment {
     }
 
     public void setData(List<CartModal> list) {
-        this.rvcategory.setLayoutManager(new LinearLayoutManager(getContext()));
-        this.rvcategory.setAdapter(new CartAdapter(list, getContext()));
+        if(list.size()==0){
+            empty.setVisibility(View.VISIBLE);
+        }
+        else {
+            empty.setVisibility(View.INVISIBLE);
+            this.rvcategory.setLayoutManager(new LinearLayoutManager(getContext()));
+            this.rvcategory.setAdapter(new CartAdapter(list, getContext()));
+        }
     }
 
     public void generateString(List<CartModal> list) {
