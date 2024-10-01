@@ -89,7 +89,7 @@ public class Bookservice extends AppCompatActivity {
             data.put("callbackUrl", "https://webhook.site/callback-url");
             data.put("mobileNumber", "8318844254"); // Optional field
             JSONObject paymentInstrument = new JSONObject();
-            paymentInstrument.put("type", "UPI_INTENT"); // UPI payment type
+            paymentInstrument.put("type", "PAY_PAGE"); // UPI payment type
             // Targeting PhonePe
             data.put("paymentInstrument", paymentInstrument);
 
