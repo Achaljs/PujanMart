@@ -53,8 +53,7 @@
 ## Contribution
 We welcome contributions! Feel free to fork this repository, create issues, or submit pull requests to improve the platform.
 
-## License
-[MIT License](LICENSE)
+
 
 ---
 
