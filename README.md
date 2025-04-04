@@ -11,6 +11,22 @@
 - **Order Tracking & History** – Keep track of past and current bookings/orders.
 - **Notifications & Reminders** – Stay updated with alerts on bookings and offers.
 
+  ## Tech Stack
+- **Frontend**: Java, XML
+- **Backend**: C#, .NET
+- **Database**: SQL Server
+- **Payment Gateway**: PhonePe Payment Gateway
+- **Version Control**: Git/Github
+- **Development Tools**: Android Studio
+- **Push Notification**: FireBase
+- 
+## Skills Utilized
+- **Android Development** (Java, XML, Android SDK)
+- **API Integration** (Secure Payment, Backend Communication)
+- **UI/UX Design** (Optimized User Interface & Experience)
+- **Database Management** (SQL Server for Data Handling)
+- **Agile Development** (Collaboration with Backend & Testing Teams)
+
 
 ## Screenshots
 
@@ -23,21 +39,7 @@
 | ![](https://github.com/Achaljs/PujanMart/blob/master/screenshots/8.jpg) | ![](https://github.com/Achaljs/PujanMart/blob/master/screenshots/9.jpg) | 
 
 
-## Tech Stack
-- **Frontend**: Java, XML
-- **Backend**: C#, .NET
-- **Database**: SQL Server
-- **Payment Gateway**: PhonePe Payment Gateway
-- **Version Control**: Git/Github
-- **Development Tools**: Android Studio
-- **Push Notification**: FireBase
 
-## Skills Utilized
-- **Android Development** (Java, XML, Android SDK)
-- **API Integration** (Secure Payment, Backend Communication)
-- **UI/UX Design** (Optimized User Interface & Experience)
-- **Database Management** (SQL Server for Data Handling)
-- **Agile Development** (Collaboration with Backend & Testing Teams)
 
 ## Installation
 1. Clone the repository:
